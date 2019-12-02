@@ -58,9 +58,11 @@ it to a string or convert it to a boolean:
 `${#toBoolean(parameters["runCanary"]) == true}`.
 
 Another example is that the status attribute of a stage is actually an enum
-internally, not a string. To compare the status to a string, you need to call
-`.toString()` on the result. For example:
-`${#stage("Deploy")["status"].toString() == "SUCCEEDED"}`.
+internally, not a string. To compare the status to a string with Spinnaker
+1.17 or earlier, you need to call `.toString()` on the result. For example:
+`${#stage("Deploy")["status"].toString() == "SUCCEEDED"}`. However, with
+Spinnaker 1.18 and later, you can use:
+`${#stage("Deploy")["status"] == "SUCCEEDED"}`.
 
 ### Functions
 
